@@ -1,0 +1,46 @@
+{
+  "name": "openlandscape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf node_modules && rm -rf build",
+    "doc": "apidoc -i src/ -o apidoc/apiexplorer/",
+    "build": "babel src -d build",
+    "start": "npm run clean && npm install && npm run build && npm run doc && node ./build/server.js",
+    "dev": "npm run clean && npm install && nodemon --legacy-watch --exec babel-node ./src/server.js",
+    "dev-noclear": "nodemon --legacy-watch --exec babel-node ./src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.4",
+    "dateformat": "^3.0.3",
+    "excel4node": "^1.7.1",
+    "express": "^4.16.3",
+    "express-rate-limit": "^2.11.0",
+    "helmet": "^3.12.1",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.17.10",
+    "multer": "^1.4.1",
+    "mysql": "^2.15.0",
+    "node-persist": "^3.0.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.1.0",
+    "request": "^2.88.0",
+    "xlsx": "^0.14.2",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.0.16",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "nodemon": "^1.17.5"
+  }
+}
