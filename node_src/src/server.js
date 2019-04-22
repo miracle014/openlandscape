@@ -16,7 +16,13 @@ import multer from 'multer';
 
 import conn from './shared/connection';
 import global from './shared/global';
+
+
 import * as XLSX from 'xlsx'
+import * as math from 'mathjs'
+import * as d3 from "d3";
+
+
 const app = express();
 const parser = new xml2js.Parser();
 
@@ -118,20 +124,39 @@ app.post('/uploads',upload.single('files'), (req, res, ) => {
     t = t.replace(/"__EMPTY_11"/g, '"RX_error_1"');
 
     var result = JSON.parse(t);
+    var JsonTime = [[],[],[],[],[],[]] 
+    result.forEach(element => {
+      let Time = new Date(element.Time)
+      Time = Time.getUTCHours()
+      if(Time >= 0 && Time <=4){
+        JsonTime[0].push(element)
+      }else if(Time > 4 && Time <=8){
+        JsonTime[1].push(element)
+      }else if(Time > 8 && Time <=12){
+        JsonTime[2].push(element)
+      }else if(Time > 12 && Time <=16){
+        JsonTime[3].push(element)
+      }else if(Time > 16 && Time <=20){
+        JsonTime[4].push(element)
+      }else if(Time > 20 && Time <=23){
+        JsonTime[5].push(element)
+      }
+      
+    });
     
-    var jsonResult = {Info:{Length:result.length,Filename:req.file.originalname,UploadDate:Date(),Day:diff_hours(_.maxBy(result, 'Time').Time, _.minBy(result, 'Time').Time)/24,Hours:diff_hours(_.maxBy(result, 'Time').Time, _.minBy(result, 'Time').Time)},Time:{max:_.maxBy(result, 'Time').Time,min:_.minBy(result, 'Time').Time},	
-    CPU_USAGE:{max:_.maxBy(result, 'CPU_USAGE').CPU_USAGE,min:_.minBy(result, 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(result, 'CPU_USAGE')},	
-    MEMORY_USAGE:{max:_.maxBy(result, 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(result, 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(result, 'MEMORY_USAGE')},	
-    Disk_write:{max:_.maxBy(result, 'Disk_write').Disk_write,min:_.minBy(result, 'Disk_write').Disk_write,avg:_.meanBy(result, 'Disk_write')},	
-    Disk_read:{max:_.maxBy(result, 'Disk_read').Disk_read,min:_.minBy(result, 'Disk_read').Disk_read,avg:_.meanBy(result, 'Disk_read')},	
-    TX_total:{max:_.maxBy(result, 'TX_total').TX_total,min:_.minBy(result, 'TX_total').TX_total,avg:_.meanBy(result, 'TX_total')},	
-    TX_total_1:{max:_.maxBy(result, 'TX_total_1').TX_total_1,min:_.minBy(result, 'TX_total_1').TX_total_1,avg:_.meanBy(result, 'TX_total_1')},	
-    TX_error:{max:_.maxBy(result, 'TX_error').TX_error,min:_.minBy(result, 'TX_error').TX_error,avg:_.meanBy(result, 'TX_error')},	
-    TX_error_1:{max:_.maxBy(result, 'TX_error_1').TX_error_1,min:_.minBy(result, 'TX_error_1').TX_error_1,avg:_.meanBy(result, 'TX_error_1')},	
-    RX_total:{max:_.maxBy(result, 'RX_total').RX_total,min:_.minBy(result, 'RX_total').RX_total,avg:_.meanBy(result, 'RX_total')},	
-    RX_total_1:{max:_.maxBy(result, 'RX_total_1').RX_total_1,min:_.minBy(result, 'RX_total_1').RX_total_1,avg:_.meanBy(result, 'RX_total_1')},	
-    RX_error:{max:_.maxBy(result, 'RX_error').RX_error,min:_.minBy(result, 'RX_error').RX_error,avg:_.meanBy(result, 'RX_error')},	
-    RX_error_1:{max:_.maxBy(result, 'RX_error_1').RX_error_1,min:_.minBy(result, 'RX_error_1').RX_error_1,avg:_.meanBy(result, 'RX_error_1')}}
+    var jsonResult = {Info:{Length:result.length,Filename:req.file.originalname,UploadDate:Date(),Day:diff_hours(_.maxBy(result, 'Time').Time, _.minBy(result, 'Time').Time)/24,Hours:diff_hours(_.maxBy(result, 'Time').Time, _.minBy(result, 'Time').Time)},Time:{ENDDATE:_.maxBy(result, 'Time').Time,STARTDATE:_.minBy(result, 'Time').Time},	
+    CPU_USAGE:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'CPU_USAGE').CPU_USAGE,min:_.minBy(JsonTime[0], 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(JsonTime[0], 'CPU_USAGE')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'CPU_USAGE').CPU_USAGE,min:_.minBy(JsonTime[1], 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(JsonTime[1], 'CPU_USAGE')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'CPU_USAGE').CPU_USAGE,min:_.minBy(JsonTime[2], 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(JsonTime[2], 'CPU_USAGE')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'CPU_USAGE').CPU_USAGE,min:_.minBy(JsonTime[3], 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(JsonTime[3], 'CPU_USAGE')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'CPU_USAGE').CPU_USAGE,min:_.minBy(JsonTime[4], 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(JsonTime[4], 'CPU_USAGE')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'CPU_USAGE').CPU_USAGE,min:_.minBy(JsonTime[5], 'CPU_USAGE').CPU_USAGE,avg:_.meanBy(JsonTime[5], 'CPU_USAGE')}],	
+    MEMORY_USAGE:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(JsonTime[0], 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(JsonTime[0], 'MEMORY_USAGE')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(JsonTime[1], 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(JsonTime[1], 'MEMORY_USAGE')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(JsonTime[2], 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(JsonTime[2], 'MEMORY_USAGE')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(JsonTime[3], 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(JsonTime[3], 'MEMORY_USAGE')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(JsonTime[4], 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(JsonTime[4], 'MEMORY_USAGE')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'MEMORY_USAGE').MEMORY_USAGE,min:_.minBy(JsonTime[5], 'MEMORY_USAGE').MEMORY_USAGE,avg:_.meanBy(JsonTime[5], 'MEMORY_USAGE')}],
+    Disk_write:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'Disk_write').Disk_write,min:_.minBy(JsonTime[0], 'Disk_write').Disk_write,avg:_.meanBy(JsonTime[0], 'Disk_write')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'Disk_write').Disk_write,min:_.minBy(JsonTime[1], 'Disk_write').Disk_write,avg:_.meanBy(JsonTime[1], 'Disk_write')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'Disk_write').Disk_write,min:_.minBy(JsonTime[2], 'Disk_write').Disk_write,avg:_.meanBy(JsonTime[2], 'Disk_write')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'Disk_write').Disk_write,min:_.minBy(JsonTime[3], 'Disk_write').Disk_write,avg:_.meanBy(JsonTime[3], 'Disk_write')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'Disk_write').Disk_write,min:_.minBy(JsonTime[4], 'Disk_write').Disk_write,avg:_.meanBy(JsonTime[4], 'Disk_write')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'Disk_write').Disk_write,min:_.minBy(JsonTime[5], 'Disk_write').Disk_write,avg:_.meanBy(JsonTime[5], 'Disk_write')}],	
+    Disk_read:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'Disk_read').Disk_read,min:_.minBy(JsonTime[0], 'Disk_read').Disk_read,avg:_.meanBy(JsonTime[0], 'Disk_read')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'Disk_read').Disk_read,min:_.minBy(JsonTime[1], 'Disk_read').Disk_read,avg:_.meanBy(JsonTime[1], 'Disk_read')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'Disk_read').Disk_read,min:_.minBy(JsonTime[2], 'Disk_read').Disk_read,avg:_.meanBy(JsonTime[2], 'Disk_read')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'Disk_read').Disk_read,min:_.minBy(JsonTime[3], 'Disk_read').Disk_read,avg:_.meanBy(JsonTime[3], 'Disk_read')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'Disk_read').Disk_read,min:_.minBy(JsonTime[4], 'Disk_read').Disk_read,avg:_.meanBy(JsonTime[4], 'Disk_read')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'Disk_read').Disk_read,min:_.minBy(JsonTime[5], 'Disk_read').Disk_read,avg:_.meanBy(JsonTime[5], 'Disk_read')}],	
+    TX_total:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'TX_total').TX_total,min:_.minBy(JsonTime[0], 'TX_total').TX_total,avg:_.meanBy(JsonTime[0], 'TX_total')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'TX_total').TX_total,min:_.minBy(JsonTime[1], 'TX_total').TX_total,avg:_.meanBy(JsonTime[1], 'TX_total')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'TX_total').TX_total,min:_.minBy(JsonTime[2], 'TX_total').TX_total,avg:_.meanBy(JsonTime[2], 'TX_total')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'TX_total').TX_total,min:_.minBy(JsonTime[3], 'TX_total').TX_total,avg:_.meanBy(JsonTime[3], 'TX_total')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'TX_total').TX_total,min:_.minBy(JsonTime[4], 'TX_total').TX_total,avg:_.meanBy(JsonTime[4], 'TX_total')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'TX_total').TX_total,min:_.minBy(JsonTime[5], 'TX_total').TX_total,avg:_.meanBy(JsonTime[5], 'TX_total')}],
+    TX_total_1:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'TX_total_1').TX_total_1,min:_.minBy(JsonTime[0], 'TX_total_1').TX_total_1,avg:_.meanBy(JsonTime[0], 'TX_total_1')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'TX_total_1').TX_total_1,min:_.minBy(JsonTime[1], 'TX_total_1').TX_total_1,avg:_.meanBy(JsonTime[1], 'TX_total_1')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'TX_total_1').TX_total_1,min:_.minBy(JsonTime[2], 'TX_total_1').TX_total_1,avg:_.meanBy(JsonTime[2], 'TX_total_1')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'TX_total_1').TX_total_1,min:_.minBy(JsonTime[3], 'TX_total_1').TX_total_1,avg:_.meanBy(JsonTime[3], 'TX_total_1')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'TX_total_1').TX_total_1,min:_.minBy(JsonTime[4], 'TX_total_1').TX_total_1,avg:_.meanBy(JsonTime[4], 'TX_total_1')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'TX_total_1').TX_total_1,min:_.minBy(JsonTime[5], 'TX_total_1').TX_total_1,avg:_.meanBy(JsonTime[5], 'TX_total_1')}],
+    TX_error:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'TX_error').TX_error,min:_.minBy(JsonTime[0], 'TX_error').TX_error,avg:_.meanBy(JsonTime[0], 'TX_error')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'TX_error').TX_error,min:_.minBy(JsonTime[1], 'TX_error').TX_error,avg:_.meanBy(JsonTime[1], 'TX_error')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'TX_error').TX_error,min:_.minBy(JsonTime[2], 'TX_error').TX_error,avg:_.meanBy(JsonTime[2], 'TX_error')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'TX_error').TX_error,min:_.minBy(JsonTime[3], 'TX_error').TX_error,avg:_.meanBy(JsonTime[3], 'TX_error')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'TX_error').TX_error,min:_.minBy(JsonTime[4], 'TX_error').TX_error,avg:_.meanBy(JsonTime[4], 'TX_error')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'TX_error').TX_error,min:_.minBy(JsonTime[5], 'TX_error').TX_error,avg:_.meanBy(JsonTime[5], 'TX_error')}],
+    TX_error_1:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'TX_error_1').TX_error_1,min:_.minBy(JsonTime[0], 'TX_error_1').TX_error_1,avg:_.meanBy(JsonTime[0], 'TX_error_1')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'TX_error_1').TX_error_1,min:_.minBy(JsonTime[1], 'TX_error_1').TX_error_1,avg:_.meanBy(JsonTime[1], 'TX_error_1')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'TX_error_1').TX_error_1,min:_.minBy(JsonTime[2], 'TX_error_1').TX_error_1,avg:_.meanBy(JsonTime[2], 'TX_error_1')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'TX_error_1').TX_error_1,min:_.minBy(JsonTime[3], 'TX_error_1').TX_error_1,avg:_.meanBy(JsonTime[3], 'TX_error_1')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'TX_error_1').TX_error_1,min:_.minBy(JsonTime[4], 'TX_error_1').TX_error_1,avg:_.meanBy(JsonTime[4], 'TX_error_1')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'TX_error_1').TX_error_1,min:_.minBy(JsonTime[5], 'TX_error_1').TX_error_1,avg:_.meanBy(JsonTime[5], 'TX_error_1')}],	
+    RX_total:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'RX_total').RX_total,min:_.minBy(JsonTime[0], 'RX_total').RX_total,avg:_.meanBy(JsonTime[0], 'RX_total')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'RX_total').RX_total,min:_.minBy(JsonTime[1], 'RX_total').RX_total,avg:_.meanBy(JsonTime[1], 'RX_total')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'RX_total').RX_total,min:_.minBy(JsonTime[2], 'RX_total').RX_total,avg:_.meanBy(JsonTime[2], 'RX_total')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'RX_total').RX_total,min:_.minBy(JsonTime[3], 'RX_total').RX_total,avg:_.meanBy(JsonTime[3], 'RX_total')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'RX_total').RX_total,min:_.minBy(JsonTime[4], 'RX_total').RX_total,avg:_.meanBy(JsonTime[4], 'RX_total')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'RX_total').RX_total,min:_.minBy(JsonTime[5], 'RX_total').RX_total,avg:_.meanBy(JsonTime[5], 'RX_total')}],
+    RX_total_1:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'RX_total_1').RX_total_1,min:_.minBy(JsonTime[0], 'RX_total_1').RX_total_1,avg:_.meanBy(JsonTime[0], 'RX_total_1')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'RX_total_1').RX_total_1,min:_.minBy(JsonTime[1], 'RX_total_1').RX_total_1,avg:_.meanBy(JsonTime[1], 'RX_total_1')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'RX_total_1').RX_total_1,min:_.minBy(JsonTime[2], 'RX_total_1').RX_total_1,avg:_.meanBy(JsonTime[2], 'RX_total_1')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'RX_total_1').RX_total_1,min:_.minBy(JsonTime[3], 'RX_total_1').RX_total_1,avg:_.meanBy(JsonTime[3], 'RX_total_1')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'RX_total_1').RX_total_1,min:_.minBy(JsonTime[4], 'RX_total_1').RX_total_1,avg:_.meanBy(JsonTime[4], 'RX_total_1')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'RX_total_1').RX_total_1,min:_.minBy(JsonTime[5], 'RX_total_1').RX_total_1,avg:_.meanBy(JsonTime[5], 'RX_total_1')}],
+    RX_error:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'RX_error').RX_error,min:_.minBy(JsonTime[0], 'RX_error').RX_error,avg:_.meanBy(JsonTime[0], 'RX_error')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'RX_error').RX_error,min:_.minBy(JsonTime[1], 'RX_error').RX_error,avg:_.meanBy(JsonTime[1], 'RX_error')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'RX_error').RX_error,min:_.minBy(JsonTime[2], 'RX_error').RX_error,avg:_.meanBy(JsonTime[2], 'RX_error')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'RX_error').RX_error,min:_.minBy(JsonTime[3], 'RX_error').RX_error,avg:_.meanBy(JsonTime[3], 'RX_error')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'RX_error').RX_error,min:_.minBy(JsonTime[4], 'RX_error').RX_error,avg:_.meanBy(JsonTime[4], 'RX_error')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'RX_error').RX_error,min:_.minBy(JsonTime[5], 'RX_error').RX_error,avg:_.meanBy(JsonTime[5], 'RX_error')}],
+    RX_error_1:[{TYPE:"00 - 04",max:_.maxBy(JsonTime[0], 'RX_error_1').RX_error_1,min:_.minBy(JsonTime[0], 'RX_error_1').RX_error_1,avg:_.meanBy(JsonTime[0], 'RX_error_1')},{TYPE:"05 - 08",max:_.maxBy(JsonTime[1], 'RX_error_1').RX_error_1,min:_.minBy(JsonTime[1], 'RX_error_1').RX_error_1,avg:_.meanBy(JsonTime[1], 'RX_error_1')},{TYPE:"09 - 12",max:_.maxBy(JsonTime[2], 'RX_error_1').RX_error_1,min:_.minBy(JsonTime[2], 'RX_error_1').RX_error_1,avg:_.meanBy(JsonTime[2], 'RX_error_1')},{TYPE:"13 - 16",max:_.maxBy(JsonTime[3], 'RX_error_1').RX_error_1,min:_.minBy(JsonTime[3], 'RX_error_1').RX_error_1,avg:_.meanBy(JsonTime[3], 'RX_error_1')},{TYPE:"17 - 20",max:_.maxBy(JsonTime[4], 'RX_error_1').RX_error_1,min:_.minBy(JsonTime[4], 'RX_error_1').RX_error_1,avg:_.meanBy(JsonTime[4], 'RX_error_1')},{TYPE:"21 - 23",max:_.maxBy(JsonTime[5], 'RX_error_1').RX_error_1,min:_.minBy(JsonTime[5], 'RX_error_1').RX_error_1,avg:_.meanBy(JsonTime[5], 'RX_error_1')}]}
   
     global.HTTPSTATUS(res,200,null,jsonResult)
   } catch (error) {
@@ -150,6 +175,15 @@ function diff_hours(dt2, dt1)
   
  }
 
+ function checkTime(type, array) 
+ {
+  dt2 = new Date(dt2)
+  dt1 = new Date(dt1)
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60);
+  return Math.abs(Math.round(diff));
+  
+ }
 app.post('/auth/token/gen', async (req, res) => {
   var {  password } = req.body
   var userInfo

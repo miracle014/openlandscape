@@ -12,15 +12,17 @@ services:
     environment:
       - TZ=Asia/Bangkok
 
-  nginx_webadmin:
-    image: nginx
+  php:
+    build: ./build/php
     volumes:
-      - ./nginx_src:/usr/share/nginx/html:ro
+      - ./nginx_src/:/var/www/html
+      - ./nginx_src/php.ini:/usr/local/etc/php/conf.d/php.ini
     labels:
       - "traefik.frontend.rule=PathPrefixStrip: /"
       - "traefik.port=80"
     environment:
-      - TZ=Asia/Bangkok
+      - VIRTUAL_HOST_WEIGHT=1
+      - VIRTUAL_HOST=*
 
   node:
     build: ./build/node
