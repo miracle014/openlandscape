@@ -778,15 +778,8 @@ app.post('/uploads/csv',upload.any(), (req, res, ) => {
     
 
     });
-    let filename = "Logfile_"+Date.now()+".csv"
-    wb.writeToBuffer().then(function(buffer) {
-      console.log(buffer);
-      
-    });
-     var filea =  wb.write(filename);
-     console.log(filea);
-     
-     res.send(filea).end()
+    let filename = "Logfile_"+Date.now()+".xlsx"
+    wb.write(filename, res);
      
     // global.HTTPSTATUS(res,200,null,jsonResult)
   } catch (error) {
