@@ -34,10 +34,7 @@
                         <li> <a class="waves-effect waves-dark" href="javascript:void(0)"aria-expanded="false"><i class="icon-speedometer"></i>Dashboard </a>
                             
                         </li>
-                        <li class="nav-small-cap">--- SUPPORT</li>
-                        <li> <a class="waves-effect waves-dark" href="../documentation/documentation.php" aria-expanded="false"><i class="far fa-circle text-danger"></i><span class="hide-menu">Documentation</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-login.php" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Log Out</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-faq.php" aria-expanded="false"><i class="far fa-circle text-info"></i><span class="hide-menu">FAQs</span></a></li>
+                       
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

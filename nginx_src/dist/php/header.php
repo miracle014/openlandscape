@@ -13,11 +13,7 @@
                             <img src="./assets/images/logo1.png"  style="width:95%" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                         <!-- dark Logo text -->
-                         <img src="./assets/images/logo.png"  style="width:95%" alt="homepage" class="dark-logo" />
-                         <!-- Light Logo text -->    
-                         <img src="./assets/images/logo.png"  style="width:95%" class="light-logo" alt="homepage" /></span> </a>
+                        </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
