@@ -1,3 +1,6 @@
+const webhook = require("webhook-discord");
+ 
+const Hook = new webhook.Webhook("https://discordapp.com/api/webhooks/574161391926378507/jG74zUujKFiteUrtGThXJuEsyNoXL-8ZH_D9bH185XtBtmAZDZpZYSF1xJUKAbJPlq0Z")
 exports.HTTPSTATUS = function(res,status,msg,data){
 	
     status = parseInt(status)
@@ -63,3 +66,37 @@ exports.randomtext = function (number) {
   
     return text;
 }
+
+exports.webhookdiscord = function (req,msg,type) {
+   
+    switch (type) {
+        case "info":
+            Hook.info("Server API",`${req.url} : ${msg}`)
+            break;
+        case "warn":
+            Hook.warn("Server API",`${req.url} : ${msg}`)
+                break;
+        case "error":
+            Hook.err("Server API",`${req.url} : ${msg}`)
+            break;
+        case "success":
+            Hook.success("Server API",`${req.url} : ${msg}`)
+            break;
+        default:
+            break;
+    }
+}
+exports.webhooklogfile = function (length,time) {
+    const message = new webhook.MessageBuilder()
+                .setName("Server API")
+                .setColor("#2ecc71")
+                .setText("Generate logfile success!!")
+                .addField("Logfile", `${length} files`)
+                .addField("Time", time)
+                .setTime();
+ 
+    Hook.send(message);
+}
+
+
+

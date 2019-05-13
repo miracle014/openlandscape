@@ -24,6 +24,34 @@ services:
       - VIRTUAL_HOST_WEIGHT=1
       - VIRTUAL_HOST=*
 
+  strapi:
+    image: strapi/strapi
+    container_name: strapi
+    environment:
+      - APP_NAME=strapi-app
+      - DATABASE_CLIENT=mysql
+      - DATABASE_HOST=mysql
+      - DATABASE_PORT=3306
+      - DATABASE_NAME=OPENLANDSCAPE
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=plokij123654
+      - DATABASE_SSL=false
+      - TZ=Asia/Bangkok
+    ports:
+      - "1337:1337"
+    # labels:
+    #   - "traefik.backend=strapi"
+    #   - "traefik.frontend.rule=Host: strapi.localhost"
+    #   - "traefik.port=80"
+    volumes:
+      - ./strapi_src:/usr/src/api/strapi-app
+      #- /usr/src/api/strapi-app/node_modules
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+    
+
   node:
     build: ./build/node
     volumes:
@@ -31,13 +59,23 @@ services:
     links:
       - mysql
       - reverse-proxy
-    command: ["npm","run","dev"]
+    command: ["npm","run","dev-noclear"]
     labels:
       - "traefik.backend=api"
       - "traefik.frontend.rule=PathPrefixStrip: /api"
       - "traefik.port=80"
     environment:
       - TZ=Asia/Bangkok
+
+  python:
+    build: ./build/python
+    volumes:
+      - ./python_src:/usr/src/app/python
+    command: ["flask", "run", "-h", "0.0.0.0","-p","80"]
+    labels:
+      - "traefik.backend=api"
+      - "traefik.frontend.rule=PathPrefixStrip: /python"
+      - "traefik.port=80"
 
   mysql:
     image: mysql:5.7
@@ -64,10 +102,10 @@ services:
      MYSQL_USERNAME: root
      MYSQL_ROOT_PASSWORD: plokij123654
      PMA_HOST: mysql
-      
+
   portainer:
     image: portainer/portainer
-    restart: "no"
+    restart: unless-stopped
     command: -H unix:///var/run/docker.sock
     ports:
       - 9000:9000

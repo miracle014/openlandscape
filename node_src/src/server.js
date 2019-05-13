@@ -24,6 +24,8 @@ import * as d3 from "d3";
 
 import xl from "excel4node";
 
+
+
 const app = express();
 const parser = new xml2js.Parser();
 
@@ -76,7 +78,6 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 }); 
-
 
 app.get('/', (req, res, ) => {
   res.json({'status':'open'}).end();
@@ -493,10 +494,13 @@ app.post('/uploads/download',upload.any(), (req, res, ) => {
   
 });
 
-app.post('/uploads/csv',upload.any(), (req, res, ) => {
+app.post('/uploads/csv',upload.any(), async (req, res ) => {
+ 
+  let start = new Date().getTime();
   var jsonResult = []
   var lastfileProcess 
   try {
+   await global.webhookdiscord(req,"log","info")
     req.files.forEach(function(element,i) {
       const workbook = XLSX.readFile(req.files[i].path, {cellDates:true, cellNF: false, cellText:false})
       const sheet_name_list = workbook.SheetNames;
@@ -779,13 +783,18 @@ app.post('/uploads/csv',upload.any(), (req, res, ) => {
 
     });
     let filename = "Logfile_"+Date.now()+".xlsx"
+    var end = new Date().getTime();
+    global.webhooklogfile(jsonResult.length,end-start)
+    console.log(req.url);
+    
     wb.write(filename, res);
      
     // global.HTTPSTATUS(res,200,null,jsonResult)
   } catch (error) {
+    global.webhookdiscord(req,`${error}`,'error')
     console.log(error);
     
-    global.HTTPSTATUS(res,404,null,{lastfile:lastfileProcess,text:'Please , upload file xlsx only!!'})
+    global.HTTPSTATUS(res,404,null,{lastfile:lastfileProcess,text:'Please , upload file csv only!!'})
   }
   
 });
