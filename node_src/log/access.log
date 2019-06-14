@@ -1,0 +1,7 @@
+[2019-06-15T01:07:12.990] [ERROR] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 404 109 "" "PostmanRuntime/7.15.0"
+[2019-06-15T01:07:14.465] [INFO] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 200 - "" "PostmanRuntime/7.15.0"
+[2019-06-15T01:07:48.379] [INFO] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 200 - "http://127.0.0.1/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+[2019-06-15T01:08:32.047] [INFO] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 200 - "http://127.0.0.1/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+[2019-06-15T01:12:44.744] [INFO] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 200 - "http://127.0.0.1/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+[2019-06-15T01:16:24.661] [INFO] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 200 85830 "http://127.0.0.1/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+[2019-06-15T02:34:26.263] [INFO] http - 172.18.0.1 - - "POST /uploads/csv HTTP/1.1" 200 85830 "http://127.0.0.1/uploads.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"

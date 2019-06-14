@@ -1,0 +1,165 @@
+[2019-06-13T22:39:10.840] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:168:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:123:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-13T22:39:13.471] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:168:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:123:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-13T22:39:14.822] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:168:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:123:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T01:25:00.978] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:168:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:123:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T01:26:34.155] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:168:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:123:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:04:30.838] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:04:32.780] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:08:11.060] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:10:25.421] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:10:30.115] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:10:31.341] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T19:46:20.087] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T20:19:23.904] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-14T20:26:10.246] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+[2019-06-15T01:07:12.912] [ERROR] app - Something went wrong: TypeError: Cannot read property 'Time' of undefined
+    at /usr/src/app/src/server.js:175:178
+    at Array.forEach (<anonymous>)
+    at _callee$ (/usr/src/app/src/server.js:130:15)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
