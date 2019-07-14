@@ -294,7 +294,7 @@
                             
                             Dropzone.forElement('#dropzone').removeAllFiles(true)
                             
-                            totalFiles = 0,
+                            totalFiles = 0;
                             completeFiles = 0;
                             
                          

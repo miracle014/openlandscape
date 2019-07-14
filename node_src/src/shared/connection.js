@@ -2,11 +2,12 @@ import mysql from 'mysql';
 import util from 'util';
 
 const pool = mysql.createPool({
-  connectionLimit: 100,
-  host: 'mysql',
+  connectionLimit: 10,
+  host: 'tribesxp_mysql',
+  port: '3306',
   user: 'root',
   password: 'plokij123654',
-  database: 'OPENLANDSCAPE'
+  database: 'TBXP'
 })
 
 pool.getConnection((err, connection) => {

@@ -24,6 +24,19 @@ services:
       - VIRTUAL_HOST_WEIGHT=1
       - VIRTUAL_HOST=*
 
+  react:
+    build: ./build/react
+    command: ["npm","run","start"]
+    volumes:
+      - './react_src:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV='development'
+
+     
+
   # strapi:
   #   image: strapi/strapi
   #   container_name: strapi
@@ -59,6 +72,17 @@ services:
     labels:
       - "traefik.backend=api"
       - "traefik.frontend.rule=PathPrefixStrip: /api"
+      - "traefik.port=80"
+    environment:
+      - TZ=Asia/Bangkok
+
+  api_doc:
+    image: nginx
+    volumes:
+      - ./node_src/apidoc:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.backend=explorer"
+      - "traefik.frontend.rule=PathPrefix: /apiexplorer"
       - "traefik.port=80"
     environment:
       - TZ=Asia/Bangkok

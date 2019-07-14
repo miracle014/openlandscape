@@ -104,21 +104,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                 <div class="col-md-12"> 
-                                     <div class="d-flex no-block align-items-center">
-                                         <div>
-                                            <h3><i class="fas fa-upload"></i></h3>
-                                            <p class="text-muted">Upload log file</p>
-                                         </div>
-                                         <div class="ml-auto">
-                                            <h2 id="countFile" class="counter text-primary">0</h2>
-                                        </div>     
-                                     </div>   
-                                </div>
-                                <div class="col-12">
-                                    <label id="logfile"></label>
+                                <div class="col-12" >
+                                    <label id="logfile" style="word-wrap:break-word;display:block;">Logs</label>
                                 </div>
                             </div>
+                            <div class="row" id="text_log" style="background-color:#2c3e50 ;border-radius: 5px">
+                                
+                            </div>
+
                         </div>
                     </div>
                     <!-- Column -->
@@ -207,10 +200,15 @@
             logfile();
         });
         function logfile() {
-            console.log("loading...");
             
-        $.get('../../node_src/log/app.log', function(data) {
-            console.log("data",data);
+        $.get('http://127.0.0.1/api/logfile', function(data) {
+            data = data.replace(/(\r\n|\n|\r)/gm, "▬").split("▬");
+            data.forEach(element => {
+                let text = `<div class="col-12 form-group m-20" style="background-color:#34495e ;border-radius: 10px">
+                                    <label id="logfile" class="m-10" style="color:#FFFFFF;word-wrap:break-word;display:block;font-size:15px">${element}</label>
+                                </div>`
+                $('#text_log').append(text)
+            });
             
         });
 

@@ -1,5 +1,9 @@
 /tmp/*
 /node_src/node_modules
 /node_src/build
+/node_src/src/asset/uploads
 /node_src/package-lock.json
 /node_src/apidoc/*
+/node_src1
+/node_socket_src
+/react_src/node_modules

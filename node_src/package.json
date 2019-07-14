@@ -2,15 +2,19 @@
   "name": "openlandscape",
   "version": "1.0.0",
   "description": "",
+  "apidoc": {
+    "title": "Custom apiDoc browser title",
+    "url": "127.0.0.1/api"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf node_modules && rm -rf build",
     "doc": "apidoc -i src/ -o apidoc/apiexplorer/",
-    "build": "babel src -d build",
-    "start": "npm run clean && npm install && npm run build && npm run doc && node ./build/server.js",
-    "dev": "npm run clean && npm install && nodemon --legacy-watch --exec babel-node ./src/server.js",
-    "dev-noclear": "nodemon --legacy-watch --exec babel-node ./src/server.js"
+    "build": "babel ./src -d ./build",
+    "start": "npm run clean && npm install && npm run build && npm run doc && STATE=PROD node ./index.js",
+    "dev": "npm run clean && npm install && STATE=DEV nodemon --legacy-watch --exec babel-node ./index.js",
+    "dev-noclear": "npm run doc && STATE=DEV nodemon --legacy-watch --exec babel-node ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -29,11 +33,14 @@
     "log4js": "^4.3.1",
     "multer": "^1.4.1",
     "mysql": "^2.15.0",
+    "mysql2": "^1.6.5",
     "node-fetch": "^2.6.0",
     "node-persist": "^3.0.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "request": "^2.88.0",
+    "sequelize": "^5.8.9",
+    "socket.io": "^2.2.0",
     "webhook-discord": "^3.1.2",
     "xlsx": "^0.14.2"
   },

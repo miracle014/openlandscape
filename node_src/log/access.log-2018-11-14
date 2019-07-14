@@ -1,0 +1,8 @@
+[2018-11-14T16:05:41.048] [INFO] http - 172.19.0.1 - - "GET /section/1 HTTP/1.1" 200 517 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:05:54.836] [ERROR] http - 172.19.0.1 - - "GET /section/1/availableRequest HTTP/1.1" 404 146 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:06:05.778] [ERROR] http - 172.19.0.1 - - "GET /province HTTP/1.1" 404 128 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:06:16.606] [INFO] http - 172.19.0.1 - - "GET /promotion/code/xxx HTTP/1.1" 200 214 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:27:26.363] [ERROR] http - 172.19.0.1 - - "GET /availableRequest/1 HTTP/1.1" 404 138 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:27:47.807] [ERROR] http - 172.19.0.1 - - "GET /availableRequest/1 HTTP/1.1" 404 138 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:30:42.748] [INFO] http - 172.19.0.1 - - "GET /availableRequest/1 HTTP/1.1" 200 538 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"
+[2018-11-14T16:45:25.271] [INFO] http - 172.19.0.1 - - "GET /province HTTP/1.1" 200 4901 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36"

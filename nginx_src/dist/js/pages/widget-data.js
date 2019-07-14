@@ -28,10 +28,10 @@ $(function () {
         };
     var target = document.getElementById('foo'); // your canvas element
     var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-    gauge.maxValue = 3000; // set max gauge value
+    gauge.maxValue = 100; // set max gauge value
     gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
     gauge.animationSpeed = 45; // set animation speed (32 is default value)
-    gauge.set(1850); // set actual value 
+    gauge.set(50); // set actual value 
     // ============================================================== 
     // Foo1 total visit
     // ============================================================== 

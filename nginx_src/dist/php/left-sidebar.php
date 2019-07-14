@@ -31,7 +31,10 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">--- PERSONAL</li>
-                        <li> <a class="waves-effect waves-dark" href="javascript:void(0)"aria-expanded="false"><i class="icon-speedometer"></i>Dashboard </a>
+                        <li> <a class="waves-effect waves-dark" href="dashboard.php"aria-expanded="false"><i class="icon-speedometer"></i>Dashboard </a>
+                            
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="uploads.php"aria-expanded="false"><i class="icon-cloud-upload"></i>Uploads</a>
                             
                         </li>
                        
