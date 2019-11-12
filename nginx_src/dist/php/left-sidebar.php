@@ -34,6 +34,9 @@
                         <li> <a class="waves-effect waves-dark" href="dashboard.php"aria-expanded="false"><i class="icon-speedometer"></i>Dashboard </a>
                             
                         </li>
+                        <li> <a class="waves-effect waves-dark" href="listVM.php"aria-expanded="false"><i class=" icon-layers"></i>List VM </a>
+                            
+                        </li>
                         <li> <a class="waves-effect waves-dark" href="uploads.php"aria-expanded="false"><i class="icon-cloud-upload"></i>Uploads</a>
                             
                         </li>

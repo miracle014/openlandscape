@@ -17,7 +17,8 @@
     <!--Toaster Popup message CSS -->
     <link href="./assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/style.css" rel="stylesheet">
+    <link href="dist/css/mystyle.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="dist/css/pages/dashboard1.css" rel="stylesheet">
     <link href="../assets/node_modules/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
@@ -77,14 +78,14 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Dashboard</h4>
+                        <h4 class="text-themecolor">Upload</h4>
                         
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard </li>
+                            <li class="breadcrumb-item active">Upload </li>
                         </ol>
                             
                        
@@ -230,51 +231,6 @@
                         });
                         this.on("sendingmultiple", function(file, xhr, data) {
                             $.LoadingOverlay("show");
-                            xhr.responseType = 'blob';
-                            xhr.onload = function () {
-                                if (this.status === 200) {
-                                    var filename = "";
-                                    var disposition = xhr.getResponseHeader('Content-Disposition');
-                                    if (disposition && disposition.indexOf('attachment') !== -1) {
-                                        var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                                        var matches = filenameRegex.exec(disposition);
-                                        if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
-                                    }
-                                    var type = xhr.getResponseHeader('Content-Type');
-
-                                    var blob = typeof File === 'function' ? new File([this.response], filename, { type: type }) : new Blob([this.response], { type: type });
-                                    if (typeof window.navigator.msSaveBlob !== 'undefined') {
-                                        // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
-                                        window.navigator.msSaveBlob(blob, filename);
-                                    } else {
-                                        var URL = window.URL || window.webkitURL;
-                                        var downloadUrl = URL.createObjectURL(blob);
-                                        if (filename) {
-                                            // use HTML5 a[download] attribute to specify filename
-                                            var a = document.createElement("a");
-                                            // safari doesn't support this yet
-                                            if (typeof a.download === 'undefined') {
-                                                window.location = downloadUrl;
-                                            } else {
-                                                a.href = downloadUrl;
-                                                a.download = filename;
-                                                document.body.appendChild(a);
-                                                a.click();
-                                               
-                                            }
-                                        } else {
-                                            window.location = downloadUrl;
-                                        }
-
-                                        setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
-                                    }
-                                }else{
-                                   
-                                }
-                                $.LoadingOverlay("hide");
-                                Dropzone.forElement('#dropzone').removeAllFiles(true)
-                                
-                            }
                           
                            
                         });
@@ -284,7 +240,8 @@
                             $('#progressbar').css('width',`${persen}%`)
                             $('#progressbar').text(`${persen}%`)
                             if (completeFiles === totalFiles) {
-                               $("#countFile").text("VM : "+completeFiles)
+                                $.LoadingOverlay("hide");
+                                window.location.href="dashboard.php"   
                                
                             }
                             

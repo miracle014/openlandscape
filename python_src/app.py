@@ -28,7 +28,9 @@ def Cluster():
     logging.warning('[Cluster] : Predict')
     cluster_labels = kmeans.fit_predict(norm_data)
     logging.warning('[Cluster] : Result')
-    result = pd.concat([pd.DataFrame(nominal_data) ,pd.DataFrame(cluster_labels,columns=['Cluster Labels']) ,pd.DataFrame(numeric_data)], axis=1)
+
+    print(cluster_labels)
+    result = pd.concat([pd.DataFrame(nominal_data) ,pd.DataFrame(cluster_labels,columns=['ClusterLabels']) ], axis=1)
     # result = pd.concat([pd.DataFrame(nominal_data) ,pd.DataFrame(cluster_labels,columns=['Cluster Labels']) ,pd.DataFrame(norm_data)], axis=1)
     logging.warning('[Cluster] : Export')
-    return jsonify({"data":result.to_csv()})
+    return jsonify(result.to_json(orient='records'))

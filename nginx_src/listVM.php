@@ -23,7 +23,7 @@
     <link href="dist/css/pages/dashboard1.css" rel="stylesheet">
     <link href="../assets/node_modules/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <link href="dist/css/pages/progressbar-page.css" rel="stylesheet">
-    
+    <link href="dist/css/pages/widget-page.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -78,17 +78,15 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Dashboard</h4>
+                        <h4 class="text-themecolor">List VM</h4>
                         
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard </li>
+                            <li class="breadcrumb-item active">List VM </li>
                         </ol>
-                            
-                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
                          
                         </div>    
                     </div>
@@ -104,15 +102,22 @@
                 <div class="card-group">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12" >
-                                    <label id="logfile" style="word-wrap:break-word;display:block;">Logs</label>
-                                </div>
-                            </div>
-                            <div class="row" id="text_log" style="background-color:#2c3e50 ;border-radius: 5px">
-                                
-                            </div>
-
+                            <form class="form-material m-t-20">  
+                               <div class="row form-group">
+                                   <div class="col-12">
+                                       <table class="table" id="history" style="width:100%">
+                                           <thead>
+                                               <tr>
+                                                   <th>No</th>
+                                                   <th>VM NAME</th>
+                                                   <th>GROUP PRICE</th>
+                                                   <th>ACTION</th>                                                
+                                               </tr>
+                                           </thead>
+                                       </table>
+                                   </div>
+                               </div>
+                           </form>
                         </div>
                     </div>
                     <!-- Column -->
@@ -188,33 +193,103 @@
     <script src="dist/js/dashboard1.js"></script>
     <script src="./assets/node_modules/toast-master/js/jquery.toast.js"></script>
     <!-- <script src="../assets/node_modules/dropzone-master/dist/dropzone.js"></script> -->
-
+    <script src="./assets/node_modules/gauge/gauge.min.js"></script>
+    <script src="./assets/node_modules/datatables/datatables.js"></script>
     <script src="dist/plugin/dropzone.js"></script>
     <script src="dist/plugin/FileSaver.js"></script>
-
+    <script src="dist/js/pages/widget-data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
 
 
     <script type="text/javascript">
-
-        $(document).ready(function () {
-            logfile();
-        });
-        function logfile() {
+            var patientInfo = new patientInfo();
+            function patientInfo(){
+                var self = this;
+                var $formLogin = $('form#loginform');
+                
+                this.initial = function(){
+                    
+                  self.onLoadPage();
+                }
             
-        $.get('http://127.0.0.1/api/logfile', function(data) {
-            data = data.replace(/(\r\n|\n|\r)/gm, "▬").split("▬");
-            data.forEach(element => {
-                let text = `<div class="col-12 form-group m-20" style="background-color:#34495e ;border-radius: 10px">
-                                    <label id="logfile" class="m-10" style="color:#FFFFFF;word-wrap:break-word;display:block;font-size:15px">${element}</label>
-                                </div>`
-                $('#text_log').append(text)
-            });
-            
-        });
+               
+                this.onLoadPage = function(){              
+                    // var token = JSON.parse(sessionStorage.getItem('data')).token
+                    $.ajax({
+                        url: 'http://127.0.0.1/api/vm',
+                        type: 'get',
+                        cache: false,
+                        // headers:{
+                        //     'Authorization':'JWT '+token
+                        // },
+                        success: function(response){
+                            console.log(response);
+                            
+                            self.createDataTable(response.DATA)
 
-        }
-   </script>
+                            
+                        
+
+                        },
+                        error: function(response){
+                            Swal.fire(
+                                'พบข้อผิดพลาด',
+                                'กรุณาตรวจสอบข้อมูลอีกครั้ง',
+                                'error'
+                                )                             
+                            
+                        }
+                    });
+                }
+
+                this.createDataTable = function(response){
+                    var table = $('table#history').DataTable({
+                        data: response,
+                        destroy: true,
+                        rowId: 'ID',
+                        bLengthChange : false,
+                        bInfo : false,
+                        iDisplayLength: 10,
+                        responsive: true,
+                        columns: [{
+                            data: 'ID',
+                            className: 'text-left',
+                            render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                            }
+                        },{
+                            data: 'NAMEFILE',
+                            className: 'text-left'
+                        },{
+                            data: 'GROUPPRICE',
+                            className: 'text-left'
+                        },{
+                            data: 'ID',
+                            className: 'text-center',
+                            width: '15%',
+                            render: function(data, type, full, meta) {
+                                return data ?'<button type="button" id="btnInfo" class="btn btn-info "><i class="fa fa-fw fa-info" style="color:white"></i>':'';
+                            }
+                        }],
+                      
+                        fnDrawCallback: function (oSettings) {
+                            $('.btn-info').click(function (e) {
+                            var data = table.row( $(this).parents('tr') ).data();
+                            // sessionStorage.setItem("HN",data.HN);
+                            window.location.href="vminfo.php?id="+data.ID; 
+                            })
+                        }
+                    });
+                   
+                }
+           
+            }
+            $(document).ready(function () {
+                patientInfo.initial();
+                
+            }); 
+            
+    </script>
    
 </body>
 

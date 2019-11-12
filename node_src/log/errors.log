@@ -1,7 +1,182 @@
-[2019-07-14T01:37:01.748] [ERROR] auth_ctrl - Something went wrong: ReferenceError: _ is not defined
-    at /usr/src/app/src/controllers/uploadControllers.js:62:92
-    at Array.forEach (<anonymous>)
-    at UploadController._callee$ (/usr/src/app/src/controllers/uploadControllers.js:18:17)
+[2019-07-17T18:06:44.300] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at /usr/src/app/node_modules/express/lib/router/index.js:635:15
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:260:14)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at allowOriginsHeaders (/usr/src/app/src/middlewares/allow-origins.js:18:3)
+  code: 'E4041',
+  detail: { request: 'GET /vm?_=1563361603962' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-07-17T18:06:46.639] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at /usr/src/app/node_modules/express/lib/router/index.js:635:15
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:260:14)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at allowOriginsHeaders (/usr/src/app/src/middlewares/allow-origins.js:18:3)
+  code: 'E4041',
+  detail: { request: 'GET /vm?_=1563361606378' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-07-17T18:06:59.851] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at /usr/src/app/node_modules/express/lib/router/index.js:635:15
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:260:14)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at allowOriginsHeaders (/usr/src/app/src/middlewares/allow-origins.js:18:3)
+  code: 'E4041',
+  detail: { request: 'GET /vm?_=1563361619364' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-07-17T18:08:38.777] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at /usr/src/app/node_modules/express/lib/router/index.js:635:15
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:260:14)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at allowOriginsHeaders (/usr/src/app/src/middlewares/allow-origins.js:18:3)
+  code: 'E4041',
+  detail: { request: 'GET /vm?_=1563361718368' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-07-17T18:14:29.679] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/usr/src/app/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:812:20)
+    at tryOnImmediate (timers.js:768:5)
+    at processImmediate [as _immediateCallback] (timers.js:745:5)
+  code: 'E4041',
+  detail: { request: 'GET /vm?_=1563362069218' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-07-17T18:14:43.083] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/usr/src/app/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:812:20)
+    at tryOnImmediate (timers.js:768:5)
+    at processImmediate [as _immediateCallback] (timers.js:745:5)
+  code: 'E4041',
+  detail: { request: 'GET /vm?_=1563362082530' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-07-17T18:19:59.803] [ERROR] app - Something went wrong: { Error: URL Not found
+    at /usr/src/app/src/server.js:32:13
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/usr/src/app/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at /usr/src/app/node_modules/express/lib/router/index.js:635:15
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:260:14)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at allowOriginsHeaders (/usr/src/app/src/middlewares/allow-origins.js:18:3)
+  code: 'E4041',
+  detail: { request: 'GET /vm.' },
+  status: 404,
+  message: 'URL Not found' }
+[2019-09-21T13:48:48.187] [ERROR] app - Something went wrong: { Error: Database query error
+    at AuthenController._callee$ (/usr/src/app/src/controllers/authenControllers.js:44:17)
     at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
     at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
     at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
@@ -10,15 +185,68 @@
     at new Promise (<anonymous>)
     at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
     at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
-    at /usr/src/app/src/controllers/uploadControllers.js:214:19
+    at /usr/src/app/src/controllers/authenControllers.js:29:35
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at next (/usr/src/app/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at /usr/src/app/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7
+  code: 'E5001',
+  detail: TypeError: Cannot read property 'findAll' of undefined
+    at AuthenController._callee$ (/usr/src/app/src/controllers/authenControllers.js:37:40)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
+    at /usr/src/app/src/controllers/authenControllers.js:29:35
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at next (/usr/src/app/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/usr/src/app/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at /usr/src/app/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/usr/src/app/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/src/app/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/usr/src/app/node_modules/express/lib/router/index.js:174:3)
+    at router (/usr/src/app/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/src/app/node_modules/express/lib/router/index.js:317:13)
+    at /usr/src/app/node_modules/express/lib/router/index.js:284:7,
+  status: 500,
+  message: 'Database query error' }
+[2019-10-02T23:32:58.633] [ERROR] auth_ctrl - Something went wrong: TypeError: Cannot read property 'RX_error' of undefined
+    at /usr/src/app/src/controllers/uploadControllers.js:72:39
+    at Array.forEach (<anonymous>)
+    at UploadController._callee$ (/usr/src/app/src/controllers/uploadControllers.js:20:17)
+    at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
+    at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
+    at /usr/src/app/src/controllers/uploadControllers.js:223:19
     at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
     at next (/usr/src/app/node_modules/express/lib/router/route.js:137:13)
     at Immediate.<anonymous> (/usr/src/app/node_modules/multer/lib/make-middleware.js:53:37)
     at runCallback (timers.js:814:20)
     at tryOnImmediate (timers.js:768:5)
     at processImmediate [as _immediateCallback] (timers.js:745:5)
-[2019-07-14T01:38:07.591] [ERROR] auth_ctrl - Something went wrong: TypeError: global.env is not a function
-    at UploadController._callee$ (/usr/src/app/src/controllers/uploadControllers.js:146:23)
+[2019-10-02T23:33:22.595] [ERROR] auth_ctrl - Something went wrong: TypeError: Cannot read property 'RX_error' of undefined
+    at /usr/src/app/src/controllers/uploadControllers.js:72:39
+    at Array.forEach (<anonymous>)
+    at UploadController._callee$ (/usr/src/app/src/controllers/uploadControllers.js:20:17)
     at tryCatch (/usr/src/app/node_modules/regenerator-runtime/runtime.js:62:40)
     at Generator.invoke [as _invoke] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:296:22)
     at Generator.prototype.(anonymous function) [as next] (/usr/src/app/node_modules/regenerator-runtime/runtime.js:114:21)
@@ -27,7 +255,7 @@
     at new Promise (<anonymous>)
     at new F (/usr/src/app/node_modules/core-js/library/modules/_export.js:36:28)
     at /usr/src/app/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
-    at /usr/src/app/src/controllers/uploadControllers.js:218:19
+    at /usr/src/app/src/controllers/uploadControllers.js:223:19
     at Layer.handle [as handle_request] (/usr/src/app/node_modules/express/lib/router/layer.js:95:5)
     at next (/usr/src/app/node_modules/express/lib/router/route.js:137:13)
     at Immediate.<anonymous> (/usr/src/app/node_modules/multer/lib/make-middleware.js:53:37)

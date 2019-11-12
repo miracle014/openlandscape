@@ -17,12 +17,17 @@
     <!--Toaster Popup message CSS -->
     <link href="./assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/style.css" rel="stylesheet">
+    <link href="dist/css/mystyle.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="dist/css/pages/dashboard1.css" rel="stylesheet">
     <link href="../assets/node_modules/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <link href="dist/css/pages/progressbar-page.css" rel="stylesheet">
     <link href="dist/css/pages/widget-page.css" rel="stylesheet">
+
+    <link href="./assets/node_modules/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <!-- <link href="./assets/node_modules/chartist-js/dist/chartist-init.css" rel="stylesheet"> -->
+    <link href="./assets/node_modules/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,7 +36,7 @@
 <![endif]-->
 </head>
 
-<body class="skin-megna-dark fixed-layout">
+<body class="skin-blue-dark fixed-layout">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -67,7 +72,7 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
@@ -87,7 +92,7 @@
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
                             
-                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                        <button type="button" class="btn btn-success d-none d-lg-block m-l-15" id="btn-download"><i class=" fas fa-save"></i> Download</button>
                          
                         </div>    
                     </div>
@@ -100,30 +105,8 @@
                 <!-- ============================================================== -->
                 <!-- Info box -->
                 <!-- ============================================================== -->
-                <div class="card-group">
-                    <div class="card">
-                        <div class="card-body">
-                            <form class="form-material m-t-20">  
-                               <div class="row form-group">
-                                   <div class="table-responsive">
-                                       <table class="table" id="history" style="width:100%">
-                                           <thead>
-                                               <tr>
-                                                   <th>No</th>
-                                                   <th>VM NAME</th>
-                                                   <th>GROUP PRICE</th>
-                                                   <th>ACTION</th>                                                
-                                               </tr>
-                                           </thead>
-                                       </table>
-                                   </div>
-                               </div>
-                           </form>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    
+                <div id="card-group-gen">
+                </div>   
                 </div>
                
                 <!-- ============================================================== -->
@@ -194,30 +177,39 @@
     <script src="dist/js/dashboard1.js"></script>
     <script src="./assets/node_modules/toast-master/js/jquery.toast.js"></script>
     <!-- <script src="../assets/node_modules/dropzone-master/dist/dropzone.js"></script> -->
+
+    <script src="./assets/node_modules/chartist-js/dist/chartist.min.js"></script>
+    <script src="./assets/node_modules/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- <script src="./assets/node_modules/chartist-js/dist/chartist-init.js"></script> -->
     <script src="./assets/node_modules/gauge/gauge.min.js"></script>
     <script src="./assets/node_modules/datatables/datatables.js"></script>
     <script src="dist/plugin/dropzone.js"></script>
     <script src="dist/plugin/FileSaver.js"></script>
     <script src="dist/js/pages/widget-data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
-
+    <script src="./assets/node_modules/echarts/echarts-all.js"></script>
 
     <script type="text/javascript">
             var patientInfo = new patientInfo();
             function patientInfo(){
                 var self = this;
                 var $formLogin = $('form#loginform');
-                
+                var params = new window.URLSearchParams(window.location.search);
                 this.initial = function(){
                     
-                  self.onLoadPage();
+                  self.onLoadPage();     
+                  $('#btn-download').click(function (e) {
+                        self.export() 
+                    })
+                          
                 }
+                
             
                
                 this.onLoadPage = function(){              
                     // var token = JSON.parse(sessionStorage.getItem('data')).token
                     $.ajax({
-                        url: 'http://127.0.0.1/api/vm',
+                        url: 'http://127.0.0.1/api/vm/find/all',
                         type: 'get',
                         cache: false,
                         // headers:{
@@ -225,10 +217,74 @@
                         // },
                         success: function(response){
                             console.log(response);
-                            
-                            self.createDataTable(response.DATA)
+                            let data = response.DATA
 
-                            
+                            data.forEach((element,i) => {
+                                let strInfo = ''
+                                let namePie = []
+                                element.info.forEach(element => {
+                                    strInfo+=`<div class="row">
+                                                    <h2> ${element.name} : ${element.value}</h2>
+                                                </div>`
+                                                namePie.push(element.name)
+                                });
+                                let card = `
+                                <div class="card-group">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-2">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row" style="margin-bottom:30px">
+                                                                <h3>GROUP ${i+1}</h3>
+                                                            </div>
+                                                           ${strInfo}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div id="pie-chart${i}" style="width:100%; height:300px;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+
+                                                                <table class="table" id="table${i}" style="width:100%; height:300px;">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>No</th>
+                                                                            <th>NAMEFILE</th>
+                                                                            <th>GROUP PRICE</th>
+                                                                            <th>ACTION</th>                                                
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                `
+                                $('#card-group-gen').append(card)
+                                self.createDataTable(`table${i}`,element.data)
+
+                                self.pieChartGen(`pie-chart${i}`,element.info,namePie)
+                                
+                                
+                            });
                         
 
                         },
@@ -242,15 +298,125 @@
                         }
                     });
                 }
+                this.pieChartGen = function(nameDiv,data,namePie){
+                    var pieChart = echarts.init(document.getElementById(nameDiv));
 
-                this.createDataTable = function(response){
-                    var table = $('table#history').DataTable({
+                    // specify chart configuration item and data
+                    option = {
+                    
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            x : 'center',
+                            y : 'bottom',
+                            data:namePie
+                        },
+                        toolbox: {
+                            show : true,
+                            feature : {                           
+                                saveAsImage : {show: true}
+                            }
+                        },
+                        color: ["#009efb","#f62d51","#90a4ae", "#dddddd","#ffbc34", "#7460ee", "#2f3d4a", "#55ce63"],
+                        calculable : true,
+                        series : [
+                            
+                            {
+                                name:'Area mode',
+                                type:'pie',
+                                radius : [20, 90],
+                                center : ['50%', 150],
+                                roseType : 'area',
+                                x: '50%',               // for funnel
+                                max: 40,                // for funnel
+                                sort : 'ascending',     // for funnel
+                                data:data
+                            }                          
+                        ]
+                    };
+                                        
+                                        
+
+                    // use configuration item and data specified to show chart
+                    pieChart.setOption(option, true), $(function() {
+                                function resize() {
+                                    setTimeout(function() {
+                                        pieChart.resize()
+                                    }, 100)
+                                }
+                                $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
+                            });
+                }
+                this.export = function() {
+                $.LoadingOverlay("show");
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', 'http://127.0.0.1/api/vm/download/csv',true);
+                // xhr.setRequestHeader("Authorization", 'Bearer '+token);
+                xhr.responseType = 'blob';
+                setTimeout( xhr.onload = function () {
+                    if (this.status === 200) {
+                        var filename = "";
+                        var disposition = xhr.getResponseHeader('Content-Disposition');
+                        if (disposition && disposition.indexOf('attachment') !== -1) {
+                            var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                            var matches = filenameRegex.exec(disposition);
+                            if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+                        }
+                        var type = xhr.getResponseHeader('Content-Type');
+
+                        var blob = typeof File === 'function' ? new File([this.response], filename, { type: type }) : new Blob([this.response], { type: type });
+                        if (typeof window.navigator.msSaveBlob !== 'undefined') {
+                            // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
+                            window.navigator.msSaveBlob(blob, filename);
+                        } else {
+                            var URL = window.URL || window.webkitURL;
+                            var downloadUrl = URL.createObjectURL(blob);
+                            if (filename) {
+                                // use HTML5 a[download] attribute to specify filename
+                                var a = document.createElement("a");
+                                // safari doesn't support this yet
+                                if (typeof a.download === 'undefined') {
+                                    window.location = downloadUrl;
+                                } else {
+                                    a.href = downloadUrl;
+                                    a.download = filename;
+                                    document.body.appendChild(a);
+                                    a.click();
+                                }
+                            } else {
+                                window.location = downloadUrl;
+                            }
+
+                            setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
+                        }
+                    }else{
+                        global.globalNiftyNoty("ไม่พบข้อมูล",'danger');
+                    }
+                    $.LoadingOverlay("hide");
+                } , 600000);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send();
+			};
+
+                this.createDataTable = function(nameTable,response){
+                    console.log('datatable',nameTable,response);
+                    
+                    var table = $('table#'+nameTable).DataTable({
                         data: response,
                         destroy: true,
                         rowId: 'ID',
                         bLengthChange : false,
                         bInfo : false,
-                        iDisplayLength: 10,
+                        dom:'frtip',
+                        "searching": false,
+                        "paging": false,
+                        "scrollY": "300px",
+                        "scrollCollapse": true,
+                        // iDisplayLength: 3,
                         responsive: true,
                         columns: [{
                             data: 'ID',
@@ -281,7 +447,6 @@
                             })
                         }
                     });
-                   
                 }
            
             }

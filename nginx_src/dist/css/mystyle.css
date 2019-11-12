@@ -1,0 +1,36 @@
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #03a9f3;
+    border-color: #03a9f3;
+}
+
+.page-link {
+    color: #03a9f3;
+}
+.page-link:hover {
+    color: #03a9f3;
+}
+
+.dataTables_paginate {
+    float: right;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #a8e0f2; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #79bae1; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #91e0ee; 
+  }

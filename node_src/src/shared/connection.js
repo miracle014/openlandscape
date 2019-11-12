@@ -3,11 +3,11 @@ import util from 'util';
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'tribesxp_mysql',
+  host: 'mysql',
   port: '3306',
   user: 'root',
   password: 'plokij123654',
-  database: 'TBXP'
+  database: 'OPENLANDSCAPE'
 })
 
 pool.getConnection((err, connection) => {

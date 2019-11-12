@@ -1,0 +1,2 @@
+[2019-09-21T13:48:48.147] [INFO] http - 172.27.0.1 - - "OPTIONS /auth/token/admin HTTP/1.1" 200 4 "http://127.0.0.1:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+[2019-09-21T13:48:48.222] [ERROR] http - 172.27.0.1 - - "POST /auth/token/admin HTTP/1.1" 500 117 "http://127.0.0.1:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"

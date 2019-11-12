@@ -29,36 +29,7 @@ export default class AuthenController {
   constructor(role = "appClient") {
     this.role = role;
   }
-  /**
- * @api {get} /localtion/province Get จังหวัด
- * @apiName GetProvince
- * @apiVersion 1.0.0
- * @apiGroup LOCALTION
- * 
- * @apiDescription แสดงข้อมูล จังหัวด
- * 
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     [
- *      {
- *        "PROVINCE_ID": 1,
- *        "PROVINCE_NAME": "กรุงเทพมหานคร   "
- *      },
- *      {
- *        "PROVINCE_ID": 2,
- *        "PROVINCE_NAME": "สมุทรปราการ   "
- *      },
- *      {
- *        "PROVINCE_ID": 3,
- *        "PROVINCE_NAME": "นนทบุรี   "
- *      },
- *      {
- *        "PROVINCE_ID": 4,
- *        "PROVINCE_NAME": "ปทุมธานี   "
- *      }
- *   ]
- */
+  
 
   adminAuthen = async (req, res, next) => {
     var { username, password } = req.body;

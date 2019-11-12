@@ -152,9 +152,15 @@ export default class UploadController {
       }).then(response => response.json())
       .catch(error => console.error('Error:', error))
       .then(function(response){
-        res.setHeader('Content-disposition', 'attachment; filename='+filename+'.csv');
-        res.set('Content-Type', 'text/csv');
-        res.status(200).send(response.data);
+        response = JSON.parse(response)
+        console.log(response);
+        response.forEach(element => {
+          VMDATA.update( {
+            CLUSTER_LABELS:element.ClusterLabels,
+    
+        },{ where:{NAMEFILE:element.NAMEFILE}});
+        });
+        res.status(200).json(response);
       });
 
       // res.setHeader('Content-disposition', 'attachment; filename='+filename+'.csv');
@@ -172,6 +178,8 @@ export default class UploadController {
 
 function diff_hours(dt2, dt1) 
  {
+   console.log(dt2, dt1);
+   
   dt2 = new Date(dt2)
   dt1 = new Date(dt1)
   var diff =(dt2.getTime() - dt1.getTime()) / 1000;

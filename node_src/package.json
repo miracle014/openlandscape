@@ -13,14 +13,16 @@
     "doc": "apidoc -i src/ -o apidoc/apiexplorer/",
     "build": "babel ./src -d ./build",
     "start": "npm run clean && npm install && npm run build && npm run doc && STATE=PROD node ./index.js",
-    "dev": "npm run clean && npm install && STATE=DEV nodemon --legacy-watch --exec babel-node ./index.js",
-    "dev-noclear": "npm run doc && STATE=DEV nodemon --legacy-watch --exec babel-node ./index.js"
+    "dev": "rm -rf ./src/asset/uploads/* && npm run doc && npm run clean && npm install && STATE=DEV nodemon --legacy-watch --exec babel-node ./index.js",
+    "dev-noclear": "rm -rf ./src/asset/uploads/* && npm run doc && STATE=DEV nodemon --legacy-watch --exec babel-node ./index.js",
+    "pm": "STATE=DEV pm2-runtime start ./eco.js --no-daemon"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
+    "cluster": "^0.7.7",
     "cors": "^2.8.4",
     "dateformat": "^3.0.3",
     "express": "^4.16.3",
@@ -36,6 +38,7 @@
     "mysql2": "^1.6.5",
     "node-fetch": "^2.6.0",
     "node-persist": "^3.0.1",
+    "os": "^0.1.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "request": "^2.88.0",
