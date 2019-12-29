@@ -42,7 +42,7 @@ services:
     links:
       - mysql
       - reverse-proxy
-    command: ["npm","run","dev-noclear"]
+    command: ["npm","run","dev"]
     labels:
       - "traefik.backend=api"
       - "traefik.frontend.rule=PathPrefixStrip: /api"
